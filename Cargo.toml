@@ -4,11 +4,11 @@ members = ["crates/ghostd-protocol", "crates/ghostd-client", "crates/ghostd"]
 exclude = ["fuzz"]
 
 [workspace.package]
-version = "0.2.0"
+version = "0.2.1"
 edition = "2024"
 license = "MIT OR Apache-2.0"
 rust-version = "1.97"
-repository = "https://github.com/gigahost-apps/ghostd"
+repository = "https://github.com/ghostrack-io/ghostd"
 
 [workspace.dependencies]
 ghostd-protocol = { path = "crates/ghostd-protocol", version = "0.2.0" }

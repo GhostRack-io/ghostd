@@ -2,7 +2,7 @@
 # Builds ghostd from source and installs it, then runs `ghostd setup`.
 #
 # From a checkout:   sh install.sh [options]
-# Piped from a tag:  curl -fsSL https://raw.githubusercontent.com/gigahost-apps/ghostd/<tag>/install.sh | sh -s -- [options]
+# Piped from a tag:  curl -fsSL https://raw.githubusercontent.com/ghostrack-io/ghostd/<tag>/install.sh | sh -s -- [options]
 #
 # Options:
 #   --ref <tag|branch|commit>  what to build when piped (default: the latest tag)
@@ -16,8 +16,8 @@
 
 set -eu
 
-API_URL="https://api.github.com/repos/gigahost-apps/ghostd"
-CODELOAD_URL="https://codeload.github.com/gigahost-apps/ghostd/tar.gz"
+API_URL="https://api.github.com/repos/ghostrack-io/ghostd"
+CODELOAD_URL="https://codeload.github.com/ghostrack-io/ghostd/tar.gz"
 RUSTUP_URL="https://sh.rustup.rs"
 
 say() {
@@ -176,7 +176,7 @@ if [ -z "$src" ]; then
         # (GitHub allows 60 unauthenticated API calls an hour per address,
         # which a shared or NAT address may have used up) never does.
         fetch "$API_URL/tags" "$tmp/tags.json" ||
-            die "cannot list the release tags from GitHub's API (its limit is 60 calls an hour per address without a token): pass --ref <tag>, the latest from https://github.com/gigahost-apps/ghostd/tags"
+            die "cannot list the release tags from GitHub's API (its limit is 60 calls an hour per address without a token): pass --ref <tag>, the latest from https://github.com/ghostrack-io/ghostd/tags"
         # One field per line first, so that the first tag's name is taken
         # however the JSON is laid out. Each of the three characters
         # becomes a newline (the repeated newline is on purpose).

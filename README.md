@@ -20,7 +20,7 @@ in the background is stopped when it ends, so a server is started as a job
 On the machine (Linux, x86_64 or aarch64), from a checkout:
 
 ```sh
-git clone https://github.com/gigahost-apps/ghostd
+git clone https://github.com/ghostrack-io/ghostd
 sh ghostd/install.sh
 ```
 
@@ -29,7 +29,7 @@ when GitHub's API cannot be asked for the tags, it stops and asks for
 `--ref`):
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/gigahost-apps/ghostd/<tag>/install.sh | sh -s --
+curl -fsSL https://raw.githubusercontent.com/ghostrack-io/ghostd/<tag>/install.sh | sh -s --
 ```
 
 `install.sh` needs a C compiler, and curl (or wget) and tar when it
