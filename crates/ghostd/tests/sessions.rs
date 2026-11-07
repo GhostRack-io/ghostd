@@ -161,7 +161,12 @@ async fn a_shell_echoes_and_ctrl_c_interrupts() {
     line(&c, &id, "sleep 100").await;
     env.wait_for("the sleep", || !below_shim(&env, &id, "sleep").is_empty());
     send(&c, &id, vec![Key::Named(NamedKey::Ctrl('c'))]).await;
-    // A sleep not interrupted would take the next line as its input.
+    // Ctrl-C ends the sleep and the shell prompts again. A line typed before
+    // that prompt is echoed early and its output lands after the prompt.
+    env.wait_for("the sleep to end", || {
+        below_shim(&env, &id, "sleep").is_empty()
+    });
+    until_matches(&c, &id, r"(?m)^\$ ?$").await;
     line(&c, &id, "echo done$((1+1))").await;
     until_matches(&c, &id, "(?m)^done2$").await;
     assert!(below_shim(&env, &id, "sleep").is_empty());
